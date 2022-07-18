@@ -2,3 +2,4 @@
 *.iml
 *.xml
 *.html
+/src/test/*
