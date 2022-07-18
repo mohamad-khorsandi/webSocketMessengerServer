@@ -1,7 +1,7 @@
 package root;
 
-import root.service.Command;
-import root.service.Service;
+import root.operation.Command;
+import root.operation.Service;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;

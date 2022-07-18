@@ -1,7 +1,8 @@
-package root.service;
+package root.operation;
 
+import root.CentralServer;
 import root.User;
-public class LoginClient extends Service{
+public class LoginClient extends Operation {
     @Override
     public Object operate(){
         //2 -------------------------
@@ -10,7 +11,7 @@ public class LoginClient extends Service{
         //3 -------------------------
         User enteredUser = null;
         try {
-            enteredUser = User.get(phone, pass);
+            enteredUser = CentralServer.centralServer.getUser(phone, pass);
             con.format("OK");
         }catch (Exception e){
             con.format(e.getMessage());

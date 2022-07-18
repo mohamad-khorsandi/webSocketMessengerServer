@@ -1,19 +1,20 @@
-package root.service;
+package root.operation;
 
 import root.*;
 import root.utils.Utils;
+import static root.CentralServer.centralServer;
 
-import static root.service.Command.LOGIN_CLIENT;
+import static root.operation.Command.LOGIN_CLIENT;
 
-public class CreateWorkspace extends Service{
+public class CreateWorkspace extends Operation {
     User creator;
     @Override
     public Void operate() throws Exception {
         //2 -------------------------------
-        creator = (User) newService(LOGIN_CLIENT, con).operate();//todo directly login
+        creator = (User) newOperation(LOGIN_CLIENT, con).operate();//todo directly login
         String workspaceName = con.next();
         //3 -------------------------------
-        Host host = Host.get(Utils.randInRange(0, (Host.size())-1));
+        Host host = centralServer.getHost(Utils.randInRange(0, (centralServer.hostListSize())-1));
         int freePort;
         try {
             freePort = host.getFreePort();

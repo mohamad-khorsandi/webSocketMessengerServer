@@ -55,18 +55,14 @@ abstract public class ConnectionPack implements Closeable {
         send.flush();
     }
 
-    protected static void closeAll(Closeable... closeables) {
-        Arrays.stream(closeables).forEach(closeable -> {
-            try {
-                closeable.close();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
+    protected static void closeAll(Closeable... closeables) throws IOException {
+        for (int i = 0; i < closeables.length; i++) {
+            closeables[i].close();
+        }
     }
 
     @Override
-    abstract public void close();
+    abstract public void close() throws IOException;
     abstract public void throwIfResIsNotOK() throws Exception;
 }
 

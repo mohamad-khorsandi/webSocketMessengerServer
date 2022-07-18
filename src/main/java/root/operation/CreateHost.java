@@ -1,12 +1,13 @@
-package root.service;
+package root.operation;
+import root.CentralServer;
 import root.Host;
 import root.utils.Utils;
+import root.utils.connections.ConnectionPack;
+import root.utils.connections.NormalConnectionPack;
 
 import java.io.IOException;
-import java.net.Socket;
-import java.util.Formatter;
 
-public class CreateHost extends Service {
+public class CreateHost extends Operation {
     public CreateHost() {
         this.shouldClosed = false;
     }
@@ -41,8 +42,7 @@ public class CreateHost extends Service {
         }
         con.format("OK");
 
-        Host.add(new Host(firstPort, lastPort, ip, con));
-
+        CentralServer.centralServer.addHost(new Host(firstPort, lastPort, ip, con));
         return null;
     }
 
@@ -54,10 +54,9 @@ public class CreateHost extends Service {
 
     private static void sendTestCode(String ip, int port, String testCode) throws IOException {
         try (
-                Socket socket = new Socket(ip, port);
-                Formatter sf = new Formatter(socket.getOutputStream());
+            NormalConnectionPack tmpCon = ConnectionPack.newNormConnectionPack(ip, port);
         ){
-            sf.format("OK "+testCode+"\n");
+            tmpCon.format("OK "+testCode);
         }
     }
 

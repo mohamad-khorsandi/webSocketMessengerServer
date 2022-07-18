@@ -1,5 +1,6 @@
 package root.utils.connections;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class NormalConnectionPack extends ConnectionPack {
@@ -26,7 +27,7 @@ public class NormalConnectionPack extends ConnectionPack {
             throw new Exception(response + " " + receive.nextLine());
     }
     @Override
-    public void close() {
+    public void close() throws IOException {
         closeAll(socket, send, receive);
     }
 }

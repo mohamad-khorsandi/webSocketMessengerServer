@@ -1,7 +1,8 @@
-package root.service;
+package root.operation;
+import root.CentralServer;
 import root.User;
 
-public class RegisterClient extends Service{
+public class RegisterClient extends Operation {
 
     @Override
     public Void operate(){
@@ -9,7 +10,7 @@ public class RegisterClient extends Service{
         String phone = con.next();
         String pass = con.next();
         //3 -------------------------
-        User.add(new User(phone, pass));
+        CentralServer.centralServer.addUser(new User(phone, pass));
         con.format("OK");
         return null;
     }

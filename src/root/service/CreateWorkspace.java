@@ -1,7 +1,7 @@
-package root.service;
+package root.operation;
 
 import root.*;
-import static root.service.Command.LOGIN_CLIENT;
+import static root.operation.Command.LOGIN_CLIENT;
 
 public class CreateWorkspace extends Service{
     User creator;

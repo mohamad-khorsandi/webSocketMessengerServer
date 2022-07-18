@@ -1,4 +1,4 @@
-package root.service;
+package root.operation;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -6,7 +6,7 @@ import java.util.Optional;
 public enum Command {
     CREATE_HOST("create-host"), REGISTER_CLIENT("register"),
     LOGIN_CLIENT("login"), CREATE_WS("create-workspace"),
-    CONNECT_WS("connect-workspace");
+    CONNECT_WS("connect-workspace"), NOP("nop");
 
     Command(String str) {
         this.str = str;

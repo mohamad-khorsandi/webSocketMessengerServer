@@ -1,5 +1,6 @@
 package root.utils.connections;
 
+import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 public class MultiReceiveConnectionPack extends ConnectionPack {
@@ -31,7 +32,7 @@ public class MultiReceiveConnectionPack extends ConnectionPack {
     }
 
     @Override
-    public void close() {
+    public void close() throws IOException {
         closeAll(socket, send, receive);
     }
 }

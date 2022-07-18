@@ -1,8 +1,8 @@
 package root;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 
-public class User{
+public class User implements Serializable {
     public User(String phone, String pass) {
         this.phone = phone;
         this.pass = pass;
@@ -12,19 +12,6 @@ public class User{
     private String pass;
     private int id;
     static int idCounter = 0;
-    static ArrayList<User> list = new ArrayList<>();
-
-    public static void add(User newUser) {
-        list.add(newUser);
-    }
-
-    public static User get(String phone, String pass) throws Exception{
-        int index = list.indexOf(new User(phone, pass));
-        if (index < 0)
-            throw new Exception("to do this operation you have to register first.");
-
-        return list.get(index);
-    }
 
     @Override
     public boolean equals(Object obj) {
